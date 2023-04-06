@@ -1,7 +1,8 @@
 <?php
 
 namespace Junges\Kafka\Concerns;
-
+use Junges\Kafka\Contracts\CanProduceMessages;
+use Junges\Kafka\Contracts\InteractsWithConfigCallbacks as InteractsWithConfigCallbacksContract; 
 trait InteractsWithConfigCallbacks
 {
     /**
@@ -15,7 +16,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withErrorCb(callable $callback): self
+    public function withErrorCb(callable $callback): InteractsWithConfigCallbacksContract
     {
         $this->callbacks['setErrorCb'] = $callback;
 
@@ -28,7 +29,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withDrMsgCb(callable $callback): self
+    public function withDrMsgCb(callable $callback): InteractsWithConfigCallbacksContract
     {
         $this->callbacks['setDrMsgCb'] = $callback;
 
@@ -41,7 +42,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withConsumeCb(callable $callback): self
+    public function withConsumeCb(callable $callback): InteractsWithConfigCallbacksContract
     {
         $this->callbacks['setConsumeCb'] = $callback;
 
@@ -54,7 +55,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withLogCb(callable $callback): self
+    public function withLogCb(callable $callback): InteractsWithConfigCallbacksContract
     {
         $this->callbacks['setLogCb'] = $callback;
 
@@ -67,7 +68,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withOffsetCommitCb(callable $callback): self
+    public function withOffsetCommitCb(callable $callback): CanProduceMessages
     {
         $this->callbacks['setOffsetCommitCb'] = $callback;
 
@@ -80,7 +81,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withRebalanceCb(callable $callback): self
+    public function withRebalanceCb(callable $callback): CanProduceMessages
     {
         $this->callbacks['setRebalanceCb'] = $callback;
 
@@ -93,7 +94,7 @@ trait InteractsWithConfigCallbacks
      * @param  callable  $callback
      * @return $this
      */
-    public function withStatsCb(callable $callback): self
+    public function withStatsCb(callable $callback): CanProduceMessages
     {
         $this->callbacks['setStatsCb'] = $callback;
 
