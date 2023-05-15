@@ -35,10 +35,11 @@ class Kafka implements CanPublishMessagesToKafka, CanConsumeMessagesFromKafka
      */
     public function createConsumer(array $topics = [], string $groupId = null, string $brokers = null): \Junges\Kafka\Contracts\ConsumerBuilder
     {
-        return ConsumerBuilder::create(
-            $brokers ?? config('kafka.brokers'),
-            $topics,
-            $groupId ?? config('kafka.consumer_group_id')
-        );
+        throw Exception;
+        // return ConsumerBuilder::create(
+        //     $brokers ?? config('kafka.brokers'),
+        //     $topics,
+        //     $groupId ?? config('kafka.consumer_group_id')
+        // );
     }
 }
